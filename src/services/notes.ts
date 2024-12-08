@@ -68,10 +68,14 @@ class NotesService {
    * @returns {Note | undefined} Обновлённая заметка или `undefined`, если заметка не найдена.
    */
   editNote(id: number, updatedData: Partial<Note>): Note | undefined {
+    console.log('id: ', id);
     const noteIndex = this.notes.findIndex((note) => note.id === id);
+    console.log('noteIndex: ', noteIndex);
     if (noteIndex === -1) {
       return;
     }
+    console.log('updatedData: ', updatedData);
+
     this.notes[noteIndex] = { ...this.notes[noteIndex], ...updatedData };
     return this.notes[noteIndex];
   }

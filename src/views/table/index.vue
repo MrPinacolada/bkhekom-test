@@ -165,6 +165,8 @@ const editNote = async (note: Note) => {
     "Введите новое название заметки:",
     "prompt"
   );
+  console.log('newTitle: ', newTitle);
+
   if (newTitle && typeof newTitle === "string") {
     noteService.editNote(note.id, { ...note, title: newTitle });
   }

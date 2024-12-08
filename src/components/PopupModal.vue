@@ -16,7 +16,7 @@
             <p>{{ message }}</p>
             <div v-if="type === 'prompt'" class="popup__input-container">
               <input
-                fade-model="userInput"
+                v-model="userInput"
                 class="popup__input"
                 placeholder="Введите текст"
               />
@@ -68,6 +68,7 @@ const hide = () => {
 const onConfirm = () => {
   if (props.type === "prompt") {
     emit("confirm", userInput.value);
+    console.log('userInput.value: ', userInput.value);
   } else {
     emit("confirm", true);
   }
