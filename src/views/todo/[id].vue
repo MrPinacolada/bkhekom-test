@@ -46,53 +46,80 @@ const isCompleted = ref(completedStates[note.value.id] || note.value.completed);
 
 <style scoped lang="scss">
 .note-detail {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  max-width: 600px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
   margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+
   &__header {
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ddd;
   }
+
   &__title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #444;
     margin: 0;
   }
+
   &__status {
-    margin-bottom: 20px;
-  }
-  &__footer {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-  &__status {
+    margin: 25px 0;
+    font-size: 1.2rem;
+
     &-label {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 500;
+      color: #666;
     }
+
     &-value {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       margin-left: 10px;
+      transition: color 0.3s ease-in-out;
+
       &--completed {
-        color: #28a745;
+        color: #28a745; 
       }
+
       &--not-completed {
-        color: #dc3545;
+        color: #dc3545; 
       }
     }
   }
+
+  &__footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
   &__back-button {
-    padding: 8px 16px;
+    padding: 12px 24px;
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+
     &:hover {
       background-color: #0056b3;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.3);
     }
   }
 }

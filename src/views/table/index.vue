@@ -204,7 +204,7 @@ onMounted(() => {
 .notes {
   max-width: 900px;
   margin: 2rem auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;;
 
   &__title {
     text-align: center;
