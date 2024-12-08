@@ -1,6 +1,7 @@
 <template>
   <div class="notes">
     <h1 class="notes__title">Список заметок</h1>
+    <router-link to="/add" class="notes__link"> Добавит заметку </router-link>
     <div class="notes__table-container">
       <table class="notes__table">
         <thead class="notes__table-head">
@@ -83,11 +84,11 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { NotesService, type Note } from "@/services/notes";
+import { noteService, type Note } from "@/services/notes";
 import PopupModal from "@/components/PopupModal.vue";
 import { useRoute, useRouter } from "vue-router";
 
-const noteService = new NotesService();
+
 const route = useRoute();
 const router = useRouter();
 

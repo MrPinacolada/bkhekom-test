@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import tableView from "@/views/table/index.vue";
 import noteView from "@/views/todo/[id].vue";
-import { NotesService } from "@/services/notes";
+import { noteService } from "@/services/notes";
+import addNote from '@/views/add/index.vue'
 
-const noteService = new NotesService();
 const hydrateProps = (route, props) => {
   Object.assign(route.meta, { props });
 };
@@ -18,6 +18,11 @@ const router = createRouter({
       path: "/table",
       name: "table",
       component: tableView,
+    },
+    {
+      path: "/add",
+      name: "addNote",
+      component: addNote,
     },
     {
       path: "/todo/:id",
