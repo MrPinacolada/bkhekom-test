@@ -1,14 +1,14 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import tableView from "@/views/table/index.vue";
 import noteView from "@/views/todo/[id].vue";
 import { noteService } from "@/services/notes";
-import addNote from '@/views/add/index.vue'
+import addNote from "@/views/add/index.vue";
 
-const hydrateProps = (route:any, props:any) => {
+const hydrateProps = (route: any, props: any) => {
   Object.assign(route.meta, { props });
 };
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -35,7 +35,7 @@ const router = createRouter({
         hydrateProps(to, { note });
         next();
       },
-      props: (route:any) => ({
+      props: (route: any) => ({
         note: route.meta.props?.note,
       }),
     },
