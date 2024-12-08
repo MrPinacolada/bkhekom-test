@@ -30,6 +30,11 @@ export class NotesService {
     return this.notes;
   }
 
+  async getNoteByTitle(title: string) {
+    const notes = await this.fetchNotes();
+    return notes.find((note) => note.title === title);
+  }
+
   editNote(id: number, updatedData: Partial<Note>): Note | undefined {
     const noteIndex = this.notes.findIndex((note) => note.id === id);
     if (noteIndex === -1) {
