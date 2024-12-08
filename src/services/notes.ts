@@ -112,13 +112,6 @@ class NotesService {
     return note;
   }
 
-  /**
-   * Возвращает все заметки со статусом `completed: true`.
-   * @returns {Note[]} Массив завершённых заметок.
-   */
-  getCompletedNotes(): Note[] {
-    return this.notes.filter((note) => note.completed);
-  }
 }
 
 export const noteService = new NotesService();
