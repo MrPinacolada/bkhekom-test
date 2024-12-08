@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
-      <div class="popup-overlay" v-if="isVisible">
-        <div class="popup">
+      <div class="popup-overlay animate__animated animate__fadeIn" v-if="isVisible">
+        <div class="popup animate__animated animate__zoomIn animate__faster">
           <div class="popup__header">
             <h3>{{ title }}</h3>
             <button
@@ -14,7 +14,7 @@
           </div>
           <div class="popup__body">
             <p>{{ message }}</p>
-            <div fade-if="type === 'prompt'" class="popup__input-container">
+            <div v-if="type === 'prompt'" class="popup__input-container">
               <input
                 fade-model="userInput"
                 class="popup__input"
