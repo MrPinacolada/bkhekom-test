@@ -4,7 +4,7 @@ import noteView from "@/views/todo/[id].vue";
 import { noteService } from "@/services/notes";
 import addNote from '@/views/add/index.vue'
 
-const hydrateProps = (route, props) => {
+const hydrateProps = (route:any, props:any) => {
   Object.assign(route.meta, { props });
 };
 const router = createRouter({
@@ -35,7 +35,7 @@ const router = createRouter({
         hydrateProps(to, { note });
         next();
       },
-      props: (route) => ({
+      props: (route:any) => ({
         note: route.meta.props?.note,
       }),
     },
