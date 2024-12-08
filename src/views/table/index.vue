@@ -8,7 +8,11 @@
             <th class="notes__table-header">#</th>
             <th class="notes__table-header">Название</th>
             <th
-              class="notes__table-header notes__filter"
+              :class="[
+                'notes__table-header',
+                'notes__filter',
+                { 'notes__filter--picked': filterCompleted },
+              ]"
               @click="filterByComplited"
             >
               Отметка о выполнении
@@ -128,10 +132,15 @@ const filteredNotes = computed(() => {
 const slugify = (title: string) => title.toLowerCase().replace(/\s+/g, "-");
 
 const toggleCompleted = (note: Note) => {
-  const completedStates = JSON.parse(
+  const completedStates: Record<string, boolean> = JSON.parse(
     localStorage.getItem("completedStates") || "{}"
   );
-  completedStates[note.id] = note.completed;
+  completedStates[note.id] = Boolean(note.completed);
+  Object.keys(completedStates).forEach((key) => {
+    if (!completedStates[key]) {
+      delete completedStates[key];
+    }
+  });
   localStorage.setItem("completedStates", JSON.stringify(completedStates));
   noteService.editNote(note.id, note);
 };
@@ -204,7 +213,7 @@ onMounted(() => {
 .notes {
   max-width: 900px;
   margin: 2rem auto;
-  font-family: "Roboto", sans-serif;;
+  font-family: "Roboto", sans-serif;
 
   &__title {
     text-align: center;
@@ -215,6 +224,9 @@ onMounted(() => {
 
   &__filter {
     cursor: pointer;
+    &--picked {
+      color: #28a745 !important;
+    }
   }
 
   &__table-container {
