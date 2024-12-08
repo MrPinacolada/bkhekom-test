@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { computed, defineProps, watchEffect } from "vue";
 import { type Note } from "@/services/notes";
 
 interface IProps {
@@ -8,11 +8,15 @@ interface IProps {
 
 const props = defineProps<IProps>();
 
-console.log(props.note);
+const note = computed(()=>props.note)
+
+watchEffect(() => {
+  console.log('Note has changed:', note.value); // Логируем изменения note
+});
 </script>
 
 <template>
   <div class="note-details">
-    <h2>{{ note.title }}</h2>
+    {{ note }}
   </div>
 </template>
